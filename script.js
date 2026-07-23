@@ -14,18 +14,53 @@
    Formato: código do país + DDD + número, só números (sem +, espaço ou traço).
    Exemplo Brasil (62) 99999-9999 -> "5562999999999"
 --------------------------------------------------------- */
-const WHATSAPP_NUMERO = "5562999999999"; // <-- TROQUE AQUI PELO SEU NÚMERO
+const WHATSAPP_NUMERO = "5581979018241"; // <-- TROQUE AQUI PELO SEU NÚMERO
 
 /* ---------------------------------------------------------
    1. DADOS DOS NÍVEIS
    Cada nível tem: id, nome, emoji, cor e faixa de questões
 --------------------------------------------------------- */
 const LEVELS = [
-  { id: 1, nome: "Nível 1 - Iniciante",     emoji: "🟢", cor: "var(--nivel1)", de: 1,  ate: 4 },
-  { id: 2, nome: "Nível 2 - Fácil",          emoji: "🟡", cor: "var(--nivel2)", de: 5,  ate: 7 },
-  { id: 3, nome: "Nível 3 - Intermediário",  emoji: "🟠", cor: "var(--nivel3)", de: 8,  ate: 10 },
-  { id: 4, nome: "Nível 4 - Avançado",       emoji: "🔵", cor: "var(--nivel4)", de: 11, ate: 13 },
-  { id: 5, nome: "Nível 5 - Hard",           emoji: "🔴", cor: "var(--nivel5)", de: 14, ate: 20 },
+  {
+    id: 1,
+    nome: "Nível 1 - Iniciante",
+    emoji: "🟢",
+    cor: "var(--nivel1)",
+    de: 1,
+    ate: 4,
+  },
+  {
+    id: 2,
+    nome: "Nível 2 - Fácil",
+    emoji: "🟡",
+    cor: "var(--nivel2)",
+    de: 5,
+    ate: 7,
+  },
+  {
+    id: 3,
+    nome: "Nível 3 - Intermediário",
+    emoji: "🟠",
+    cor: "var(--nivel3)",
+    de: 8,
+    ate: 10,
+  },
+  {
+    id: 4,
+    nome: "Nível 4 - Avançado",
+    emoji: "🔵",
+    cor: "var(--nivel4)",
+    de: 11,
+    ate: 13,
+  },
+  {
+    id: 5,
+    nome: "Nível 5 - Hard",
+    emoji: "🔴",
+    cor: "var(--nivel5)",
+    de: 14,
+    ate: 20,
+  },
 ];
 
 /* ---------------------------------------------------------
@@ -43,14 +78,16 @@ const CHALLENGES = [
   {
     numero: 2,
     titulo: "Criar calculadora simples",
-    descricao: "Crie uma calculadora que some, subtraia, multiplique e divida dois números.",
+    descricao:
+      "Crie uma calculadora que some, subtraia, multiplique e divida dois números.",
     entrada: "10, 5, +",
     saida: "Resultado: 15",
   },
   {
     numero: 3,
     titulo: "Verificar faixa de idade",
-    descricao: "Peça a idade da pessoa e informe se é criança, adolescente, adulto ou idoso.",
+    descricao:
+      "Peça a idade da pessoa e informe se é criança, adolescente, adulto ou idoso.",
     entrada: "16",
     saida: "Adolescente",
   },
@@ -71,14 +108,16 @@ const CHALLENGES = [
   {
     numero: 6,
     titulo: "Contar números pares e ímpares",
-    descricao: "Peça uma lista de números e conte quantos são pares e quantos são ímpares.",
+    descricao:
+      "Peça uma lista de números e conte quantos são pares e quantos são ímpares.",
     entrada: "[1, 2, 3, 4, 5, 6]",
     saida: "Pares: 3 | Ímpares: 3",
   },
   {
     numero: 7,
     titulo: "Sistema de aprovação por média",
-    descricao: "Calcule a média de um aluno e diga se ele foi aprovado (média >= 7) ou reprovado.",
+    descricao:
+      "Calcule a média de um aluno e diga se ele foi aprovado (média >= 7) ou reprovado.",
     entrada: "6.5, 7.0, 8.0",
     saida: "Média: 7.16 - Aprovado",
   },
@@ -92,14 +131,16 @@ const CHALLENGES = [
   {
     numero: 9,
     titulo: "Lista de compras",
-    descricao: "Crie uma lista de compras onde o usuário pode adicionar e remover itens.",
+    descricao:
+      "Crie uma lista de compras onde o usuário pode adicionar e remover itens.",
     entrada: "Adicionar: Arroz, Feijão",
     saida: "Lista: [Arroz, Feijão]",
   },
   {
     numero: 10,
     titulo: "Cadastro de alunos",
-    descricao: "Crie um cadastro simples de alunos com nome e nota, guardando em uma lista.",
+    descricao:
+      "Crie um cadastro simples de alunos com nome e nota, guardando em uma lista.",
     entrada: "{ nome: 'Ana', nota: 8.5 }",
     saida: "Aluno cadastrado com sucesso!",
   },
@@ -113,14 +154,16 @@ const CHALLENGES = [
   {
     numero: 12,
     titulo: "Gerador de senha",
-    descricao: "Crie um gerador de senhas aleatórias com letras, números e símbolos.",
+    descricao:
+      "Crie um gerador de senhas aleatórias com letras, números e símbolos.",
     entrada: "Tamanho: 8",
     saida: "Senha gerada: aZ9#kLp1",
   },
   {
     numero: 13,
     titulo: "Analisador de texto",
-    descricao: "Receba um texto e conte quantas palavras, letras e vogais ele possui.",
+    descricao:
+      "Receba um texto e conte quantas palavras, letras e vogais ele possui.",
     entrada: "'Arena Dev'",
     saida: "Palavras: 2 | Letras: 8 | Vogais: 4",
   },
@@ -134,42 +177,48 @@ const CHALLENGES = [
   {
     numero: 15,
     titulo: "Chat simples",
-    descricao: "Crie um chat básico onde as mensagens digitadas aparecem na tela com hora de envio.",
+    descricao:
+      "Crie um chat básico onde as mensagens digitadas aparecem na tela com hora de envio.",
     entrada: "'Olá, tudo bem?'",
     saida: "[10:32] Olá, tudo bem?",
   },
   {
     numero: 16,
     titulo: "Sistema de votação",
-    descricao: "Crie uma votação simples entre candidatos, contando os votos de cada um.",
+    descricao:
+      "Crie uma votação simples entre candidatos, contando os votos de cada um.",
     entrada: "Voto: Candidato A",
     saida: "Candidato A: 1 voto",
   },
   {
     numero: 17,
     titulo: "Jogo da forca",
-    descricao: "Crie o clássico jogo da forca com uma palavra secreta e tentativas de letras.",
+    descricao:
+      "Crie o clássico jogo da forca com uma palavra secreta e tentativas de letras.",
     entrada: "Palavra: 'javascript', Letra: 'a'",
     saida: "j_v_scr_pt (letra encontrada!)",
   },
   {
     numero: 18,
     titulo: "Sistema com cadastro de usuários",
-    descricao: "Crie um CRUD simples (criar, listar, editar e excluir) de usuários.",
+    descricao:
+      "Crie um CRUD simples (criar, listar, editar e excluir) de usuários.",
     entrada: "Cadastrar: { nome: 'João', email: 'joao@email.com' }",
     saida: "Usuário cadastrado com sucesso!",
   },
   {
     numero: 19,
     titulo: "Criar uma API simples",
-    descricao: "Simule uma API usando JavaScript (funções que retornam dados em formato JSON).",
+    descricao:
+      "Simule uma API usando JavaScript (funções que retornam dados em formato JSON).",
     entrada: "GET /usuarios",
     saida: "[{ id: 1, nome: 'Maria' }]",
   },
   {
     numero: 20,
     titulo: "Sistema completo de gerenciamento de tarefas",
-    descricao: "Crie um sistema completo para criar, concluir, editar e excluir tarefas (To-Do List).",
+    descricao:
+      "Crie um sistema completo para criar, concluir, editar e excluir tarefas (To-Do List).",
     entrada: "Adicionar tarefa: 'Estudar JavaScript'",
     saida: "Tarefa adicionada: 'Estudar JavaScript' (pendente)",
   },
@@ -244,7 +293,7 @@ function renderChallenges() {
   LEVELS.forEach((nivel) => {
     // Filtra os desafios que pertencem a esse nível
     const desafiosDoNivel = CHALLENGES.filter(
-      (c) => c.numero >= nivel.de && c.numero <= nivel.ate
+      (c) => c.numero >= nivel.de && c.numero <= nivel.ate,
     );
 
     // Cria o bloco do nível
@@ -296,7 +345,7 @@ function criarCardDesafio(desafio, corNivel) {
   const botao = card.querySelector(".btn-complete");
   botao.addEventListener("click", () => {
     concluirDesafio(desafio.numero);
-    renderChallenges();   // re-renderiza os cards (atualiza visual, mostra concluído)
+    renderChallenges(); // re-renderiza os cards (atualiza visual, mostra concluído)
     atualizarProgresso(); // atualiza as barras de progresso
 
     enviarMensagemWhatsapp(desafio);
@@ -371,10 +420,10 @@ function renderProgressoPorNivel() {
 
   LEVELS.forEach((nivel) => {
     const desafiosDoNivel = CHALLENGES.filter(
-      (c) => c.numero >= nivel.de && c.numero <= nivel.ate
+      (c) => c.numero >= nivel.de && c.numero <= nivel.ate,
     );
     const concluidosNoNivel = desafiosDoNivel.filter((c) =>
-      progresso.includes(c.numero)
+      progresso.includes(c.numero),
     ).length;
 
     const item = document.createElement("div");
@@ -443,32 +492,39 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Envio do formulário de cadastro
-  document.getElementById("form-cadastro").addEventListener("submit", (evento) => {
-    evento.preventDefault(); // impede o recarregamento da página
+  document
+    .getElementById("form-cadastro")
+    .addEventListener("submit", (evento) => {
+      evento.preventDefault(); // impede o recarregamento da página
 
-    const dados = {
-      nome: document.getElementById("input-nome").value.trim(),
-      idade: document.getElementById("input-idade").value,
-      atuacao: document.getElementById("input-atuacao").value.trim(),
-      situacao: document.getElementById("input-situacao").value,
-      areaProgramacao: document.getElementById("input-area-programacao").value,
-    };
+      const dados = {
+        nome: document.getElementById("input-nome").value.trim(),
+        idade: document.getElementById("input-idade").value,
+        atuacao: document.getElementById("input-atuacao").value.trim(),
+        situacao: document.getElementById("input-situacao").value,
+        areaProgramacao: document.getElementById("input-area-programacao")
+          .value,
+      };
 
-    salvarUsuario(dados);
+      salvarUsuario(dados);
 
-    // Depois de cadastrar, segue para a página que o usuário queria ver
-    mostrarPagina(paginaDestinoAposCadastro);
-  });
+      // Depois de cadastrar, segue para a página que o usuário queria ver
+      mostrarPagina(paginaDestinoAposCadastro);
+    });
 
   // Botão de resetar progresso
-  document.getElementById("btn-reset-progress").addEventListener("click", () => {
-    const confirmar = confirm("Tem certeza que deseja apagar todo o seu progresso?");
-    if (confirmar) {
-      resetarProgresso();
-      renderChallenges();
-      atualizarProgresso();
-    }
-  });
+  document
+    .getElementById("btn-reset-progress")
+    .addEventListener("click", () => {
+      const confirmar = confirm(
+        "Tem certeza que deseja apagar todo o seu progresso?",
+      );
+      if (confirmar) {
+        resetarProgresso();
+        renderChallenges();
+        atualizarProgresso();
+      }
+    });
 
   // Renderiza tudo pela primeira vez
   renderChallenges();

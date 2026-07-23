@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Arena Dev - Desafios de Programação</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- ===================== MENU SUPERIOR ===================== -->
+    <header class="navbar">
+      <div class="navbar-logo">&gt; Arena_Dev<span class="cursor">_</span></div>
+
+      <!-- Botão hamburguer, só aparece no mobile -->
+      <button id="btn-menu-toggle" class="menu-toggle" aria-label="Abrir menu">
+        ☰
+      </button>
+
+      <nav id="navbar-links" class="navbar-links">
+        <button class="nav-btn active" data-page="home">Início</button>
+        <button class="nav-btn" data-page="challenges">Desafios</button>
+        <button class="nav-btn" data-page="progress">Progresso</button>
+      </nav>
+    </header>
+
+    <!-- ===================== PÁGINA INICIAL ===================== -->
+    <section id="page-home" class="page active-page">
+      <div class="home-content">
+        <h1 class="home-title">Arena Dev - Codigo com Café ☕</h1>
+        <p class="home-description">
+          Desafios de programação para todos os níveis.<br />
+          Aprenda, pratique e evolua junto com a comunidade.
+        </p>
+        <button id="btn-ver-desafios" class="btn-primary">
+          Ver desafios &gt;_
+        </button>
+      </div>
+    </section>
+
+    <!-- ===================== PÁGINA DE CADASTRO ===================== -->
+    <!-- Precisa ser preenchida antes de acessar Desafios ou Progresso -->
+    <section id="page-cadastro" class="page">
+      <h2 class="page-title">Cadastro do Participante</h2>
+      <p class="cadastro-intro">
+        Antes de começar, preencha seus dados. Isso é usado só para o seu
+        certificado e para identificar quem concluiu cada desafio.
+      </p>
+
+      <form id="form-cadastro" class="form-cadastro">
+        <label for="input-nome">Nome</label>
+        <input
+          type="text"
+          id="input-nome"
+          placeholder="Seu nome completo"
+          required
+        />
+
+        <label for="input-idade">Idade</label>
+        <input
+          type="number"
+          id="input-idade"
+          placeholder="Ex: 22"
+          min="1"
+          max="120"
+          required
+        />
+
+        <label for="input-atuacao">Área de atuação</label>
+        <input
+          type="text"
+          id="input-atuacao"
+          placeholder="Ex: TI, Marketing, Estudante, etc."
+          required
+        />
+
+        <label for="input-situacao">Situação</label>
+        <select id="input-situacao" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="Estudante">Estudante</option>
+          <option value="Formado">Formado</option>
+        </select>
+
+        <label for="input-area-programacao">Área na programação</label>
+        <select id="input-area-programacao" required>
+          <option value="" disabled selected>Selecione...</option>
+          <option value="Front-end">Front-end</option>
+          <option value="Back-end">Back-end</option>
+          <option value="Full Stack">Full Stack</option>
+          <option value="Mobile">Mobile</option>
+          <option value="Dados / IA">Dados / IA</option>
+          <option value="DevOps / Infra">DevOps / Infra</option>
+          <option value="Ainda não sei / Iniciante">
+            Ainda não sei / Iniciante
+          </option>
+        </select>
+
+        <button type="submit" class="btn-primary">
+          Começar os desafios &gt;_
+        </button>
+      </form>
+    </section>
+
+    <!-- ===================== PÁGINA DE DESAFIOS ===================== -->
+    <section id="page-challenges" class="page">
+      <h2 class="page-title">Desafios</h2>
+
+      <!-- Barra de progresso resumida, também aparece aqui -->
+      <div class="progress-mini">
+        <span id="progress-mini-text">Desafios concluídos: 0/20</span>
+        <div class="progress-bar-track">
+          <div id="progress-mini-bar" class="progress-bar-fill"></div>
+        </div>
+      </div>
+
+      <!-- Os níveis e os cards de desafios são gerados via JavaScript -->
+      <div id="challenges-container"></div>
+    </section>
+
+    <!-- ===================== PÁGINA DE PROGRESSO ===================== -->
+    <section id="page-progress" class="page">
+      <h2 class="page-title">Seu Progresso</h2>
+
+      <div class="progress-card">
+        <p id="progress-text-big">Desafios concluídos: 0/20</p>
+        <div class="progress-bar-track big">
+          <div id="progress-bar-big" class="progress-bar-fill"></div>
+        </div>
+        <p id="progress-percent" class="progress-percent">0%</p>
+      </div>
+
+      <!-- Resumo por nível -->
+      <div id="progress-levels" class="progress-levels"></div>
+
+      <button id="btn-reset-progress" class="btn-secondary">
+        Resetar progresso
+      </button>
+    </section>
+
+    <!-- ===================== RODAPÉ ===================== -->
+    <footer class="footer">
+      <p>Arena Dev © 2026 - Aprenda programação praticando</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

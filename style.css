@@ -1,0 +1,522 @@
+/* =========================================================
+   ARENA DEV - style.css
+   Tema escuro, estilo "terminal/hacker", responsivo.
+   ========================================================= */
+
+/* --- Reset básico --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --bg-color: #0d1117;
+  --bg-secondary: #11161c;
+  --text-color: #e6edf3;
+  --text-muted: #8b949e;
+  --accent: #39ff88;       /* verde estilo terminal */
+  --accent-dark: #1f7a44;
+  --border-color: #21262d;
+
+  /* Cores por nível de desafio */
+  --nivel1: #2ecc71; /* verde */
+  --nivel2: #f1c40f; /* amarelo */
+  --nivel3: #e67e22; /* laranja */
+  --nivel4: #3498db; /* azul */
+  --nivel5: #e74c3c; /* vermelho */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: "Courier New", Consolas, Monaco, monospace;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* =========================================================
+   MENU SUPERIOR
+   ========================================================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background-color: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.navbar-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--accent);
+}
+
+/* Cursor piscando, remete a terminal */
+.cursor {
+  animation: blink 1s step-start infinite;
+}
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+.menu-toggle {
+  display: none; /* só aparece no mobile, ver media query abaixo */
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--accent);
+  font-size: 1.3rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.navbar-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.nav-btn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.nav-btn.active {
+  background-color: var(--accent);
+  color: #0d1117;
+  border-color: var(--accent);
+  font-weight: bold;
+}
+
+/* =========================================================
+   PÁGINAS (mostrar/esconder via JS)
+   ========================================================= */
+.page {
+  display: none;
+  padding: 2.5rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page.active-page {
+  display: block;
+}
+
+.page-title {
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.7rem;
+}
+
+/* =========================================================
+   PÁGINA INICIAL
+   ========================================================= */
+#page-home {
+  min-height: 75vh;
+  display: none;
+  align-items: center;
+  justify-content: center;
+}
+
+#page-home.active-page {
+  display: flex;
+}
+
+.home-content {
+  text-align: center;
+  max-width: 600px;
+}
+
+.home-title {
+  font-size: 2.8rem;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  text-shadow: 0 0 12px rgba(57, 255, 136, 0.35);
+}
+
+.home-description {
+  color: var(--text-muted);
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.8rem 1.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  border: none;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: #0d1117;
+  font-weight: bold;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 15px rgba(57, 255, 136, 0.5);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+  margin-top: 2rem;
+}
+
+.btn-secondary:hover {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+/* =========================================================
+   BARRA DE PROGRESSO (mini, na página de desafios)
+   ========================================================= */
+.progress-mini {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 2rem;
+}
+
+#progress-mini-text {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--text-muted);
+}
+
+.progress-bar-track {
+  width: 100%;
+  height: 12px;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.progress-bar-track.big {
+  height: 20px;
+  margin: 1rem 0;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  width: 0%; /* atualizado via JS */
+  background: linear-gradient(90deg, var(--accent-dark), var(--accent));
+  transition: width 0.4s ease;
+}
+
+/* =========================================================
+   NÍVEIS E CARDS DE DESAFIOS
+   ========================================================= */
+.level-block {
+  margin-bottom: 2.5rem;
+}
+
+.level-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 2px solid var(--level-color, var(--accent));
+  color: var(--level-color, var(--accent));
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+}
+
+.challenge-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--level-color, var(--accent));
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: transform 0.15s ease;
+}
+
+.challenge-card:hover {
+  transform: translateY(-3px);
+}
+
+.challenge-card.completed {
+  opacity: 0.6;
+  border-left-color: var(--accent);
+}
+
+.challenge-card.completed .challenge-title::after {
+  content: " ✅";
+}
+
+.challenge-number {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.challenge-title {
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: var(--text-color);
+}
+
+.challenge-description {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+.challenge-io {
+  background-color: var(--bg-color);
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  padding: 0.5rem 0.7rem;
+  font-size: 0.8rem;
+}
+
+.challenge-io strong {
+  color: var(--accent);
+}
+
+.btn-complete {
+  margin-top: 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--level-color, var(--accent));
+  color: var(--level-color, var(--accent));
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transition: all 0.2s ease;
+}
+
+.btn-complete:hover {
+  background-color: var(--level-color, var(--accent));
+  color: #0d1117;
+}
+
+.btn-complete:disabled {
+  cursor: default;
+  background-color: var(--accent);
+  color: #0d1117;
+  border-color: var(--accent);
+}
+
+/* =========================================================
+   PÁGINA DE CADASTRO
+   ========================================================= */
+.cadastro-intro {
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  max-width: 500px;
+}
+
+.form-cadastro {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  max-width: 420px;
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+}
+
+.form-cadastro label {
+  color: var(--accent);
+  font-size: 0.85rem;
+  margin-top: 0.6rem;
+}
+
+.form-cadastro input,
+.form-cadastro select {
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.form-cadastro input:focus,
+.form-cadastro select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.form-cadastro .btn-primary {
+  margin-top: 1.2rem;
+  width: 100%;
+}
+
+/* =========================================================
+   PÁGINA DE PROGRESSO
+   ========================================================= */
+.progress-card {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.progress-percent {
+  font-size: 1.8rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.progress-levels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.progress-level-item {
+  background-color: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--level-color, var(--accent));
+  border-radius: 8px;
+  padding: 1rem;
+}
+
+.progress-level-item h4 {
+  color: var(--level-color, var(--accent));
+  margin-bottom: 0.4rem;
+}
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  color: var(--text-muted);
+  border-top: 1px solid var(--border-color);
+  font-size: 0.85rem;
+}
+
+/* =========================================================
+   RESPONSIVIDADE
+   ========================================================= */
+
+/* Tablets e telas médias */
+@media (max-width: 900px) {
+  .page {
+    padding: 2rem 1.2rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  }
+}
+
+/* Celulares */
+@media (max-width: 700px) {
+  .navbar {
+    padding: 0.8rem 1rem;
+  }
+
+  /* Mostra o botão hamburguer e esconde o menu por padrão */
+  .menu-toggle {
+    display: block;
+  }
+
+  .navbar-links {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.8rem;
+  }
+
+  .navbar-links.open {
+    display: flex;
+  }
+
+  .nav-btn {
+    width: 100%;
+    text-align: left;
+  }
+
+  .home-title {
+    font-size: 2rem;
+  }
+
+  .home-description {
+    font-size: 1rem;
+  }
+
+  .page-title {
+    font-size: 1.3rem;
+  }
+
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .challenge-card {
+    padding: 0.9rem 1rem;
+  }
+
+  .form-cadastro {
+    max-width: 100%;
+  }
+}
+
+/* Celulares pequenos */
+@media (max-width: 400px) {
+  .home-title {
+    font-size: 1.6rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  .navbar-logo {
+    font-size: 1.1rem;
+  }
+}
+
+/* Garante área de toque confortável em qualquer botão no mobile */
+@media (max-width: 700px) {
+  .nav-btn,
+  .btn-primary,
+  .btn-secondary,
+  .btn-complete {
+    min-height: 44px;
+  }
+}
